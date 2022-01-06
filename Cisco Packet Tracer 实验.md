@@ -21,11 +21,11 @@
 
 `拓扑结构`
 
-![image-20220106133413119](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106133413119.png)
+![image-20220106133413119](https://user-images.githubusercontent.com/65861540/148334084-f0e06189-c493-4ac7-8199-e0103560c1ac.png)
 
 `两台PC的基本网络配置`
 
-![image-20220106133338373](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106133338373.png)
+![image-20220106133338373](https://user-images.githubusercontent.com/65861540/148334133-40b04f34-7586-4cc1-9f3b-35bab3bdb5c8.png)
 
 ## 用交换机构建 LAN
 
