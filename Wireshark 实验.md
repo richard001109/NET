@@ -23,13 +23,12 @@
 ## 数据链路层
 
 ​		数据链路层是OSI参考模型中的第二层，介乎于物理层和网络层之间。数据链路层在物理层提供的服务的基础上向网络层提供服务，其最基本的服务是将源自网络层来的数据可靠地传输到相邻节点的目标机网络层。
-![20201123003749172](C:\Users\Administrator\Desktop\新建文件夹\20201123003749172.png)
+![20201123003749172](https://user-images.githubusercontent.com/65861540/148330042-d9602450-375b-48a8-ad9b-c713133520f6.png)
 
 ### 实作一 熟悉 Ethernet 帧结构
 
 使用 Wireshark 任意进行抓包，熟悉 Ethernet 帧的结构，如：目的 MAC、源 MAC、类型、字段等。
-
-![image-20211210163032176](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211210163032176.png)
+![image-20211210163032176](https://user-images.githubusercontent.com/65861540/148330166-93ecfc0e-47ac-41b2-a550-e9e7c961f74a.png)
 
 >Ethernet帧格式包含目的MAC，源MAC，类型，数据，校验字段。从图中可以看到该帧的
 >
@@ -49,7 +48,7 @@
 
 1. `ping` 你旁边的计算机（同一子网），同时用 Wireshark 抓这些包（可使用 icmp 关键字进行过滤以利于分析），记录一下发出帧的目的 MAC 地址以及返回帧的源 MAC 地址是多少？这个 MAC 地址是谁的？
 
-![image-20220106100252640](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106100252640.png)
+![image-20220106100252640](https://user-images.githubusercontent.com/65861540/148330217-c434e0fc-ac0a-433c-ac1b-2f548a5fedfe.png)
 
 > Destination MAC: `3c:91:80:45:8a:f7`(目的MAC)
 >
@@ -62,7 +61,7 @@
 
 2.   然后 `ping qige.io` （或者本子网外的主机都可以），同时用 Wireshark 抓这些包（可 icmp 过滤），记录一下发出帧的目的 MAC 地址以及返回帧的源 MAC 地址是多少？这个 MAC 地址是谁的？
 
-![image-20211210171000823](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211210171000823.png)
+![image-20211210171000823](https://user-images.githubusercontent.com/65861540/148330350-b2362862-e696-4114-8020-7c5786cf3701.png)
 
 > Destination MAC: `9a:50:2a:e0:ef:4e`   
 >
@@ -74,7 +73,7 @@
 
 3. 再次 `ping www.cqjtu.edu.cn` （或者本子网外的主机都可以），同时用 Wireshark 抓这些包（可 icmp 过滤），记录一下发出帧的目的 MAC 地址以及返回帧的源 MAC 地址又是多少？这个 MAC 地址又是谁的？
 
-![image-20211210173151255](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211210173151255.png)
+![image-20211210173151255](https://user-images.githubusercontent.com/65861540/148330393-8c36d038-7e7d-4115-9565-69378382aaaf.png)
 
 >Destination MAC: `9a:50:2a:e0:ef:4e`   
 >
