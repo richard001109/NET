@@ -23,6 +23,7 @@
 ## 数据链路层
 
 ​		数据链路层是OSI参考模型中的第二层，介乎于物理层和网络层之间。数据链路层在物理层提供的服务的基础上向网络层提供服务，其最基本的服务是将源自网络层来的数据可靠地传输到相邻节点的目标机网络层。
+
 ![20201123003749172](https://user-images.githubusercontent.com/65861540/148330042-d9602450-375b-48a8-ad9b-c713133520f6.png)
 
 ### 实作一 熟悉 Ethernet 帧结构
@@ -99,17 +100,17 @@
 
 1. 为防止干扰，先使用 `arp -d *` 命令清空 arp 缓存
 
-![image-20211210174851060](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211210174851060.png)
+![image-20211210174851060](https://user-images.githubusercontent.com/65861540/148331006-9a56532e-60dc-43e2-8c74-42f78dc986c9.png)
 
 2. `ping` 你旁边的计算机（同一子网），同时用 Wireshark 抓这些包（可 arp 过滤），查看 ARP 请求的格式以及请求的内容，注意观察该请求的目的 MAC 地址是什么。再查看一下该请求的回应，注意观察该回应的源 MAC 和目的 MAC 地址是什么。
 
-   ![image-20220106102459236](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106102459236.png)
+   ![image-20220106102459236](https://user-images.githubusercontent.com/65861540/148331007-250a803a-f417-422f-89ab-bb5ecfef6daf.png)
 
    > Destination MAC`ff:ff:ff:ff:ff:ff`(Broadcast)
 
-   ![image-20220106102916165](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106102916165.png)
+   ![image-20220106102916165](https://user-images.githubusercontent.com/65861540/148331060-f7586796-a6ff-418e-b19d-33101291f5ee.png)
 
-   ![image-20220106103054189](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106103054189.png)
+   ![image-20220106103054189](https://user-images.githubusercontent.com/65861540/148331089-373b50a3-0830-4184-ba56-5bedddad7142.png)
 
    > Destination MAC: `94:b8:6d:a7:38:9d`   
    >
@@ -123,7 +124,7 @@
 
 4. 然后 `ping qige.io` （或者本子网外的主机都可以），同时用 Wireshark 抓这些包（可 arp 过滤）。查看这次 ARP 请求的是什么，注意观察该请求是谁在回应。
 
-![image-20220106104126979](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106104126979.png)
+![image-20220106104126979](https://user-images.githubusercontent.com/65861540/148331117-14bf319d-9f0f-4264-9081-d50daf1071aa.png)
 
 > 此次ARP请求是在询问子网网关的MAC地址，该请求由网关回应
 
@@ -144,7 +145,7 @@
 
 使用 Wireshark 任意进行抓包（可用 ip 过滤），熟悉 IP 包的结构，如：版本、头部长度、总长度、TTL、协议类型等字段。
 
-![image-20220106104650231](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106104650231.png)
+![image-20220106104650231](https://user-images.githubusercontent.com/65861540/148331142-e5f899fa-6665-47a7-afc4-0a04a739e1c9.png)
 
 ✎ **问题**
 
@@ -158,9 +159,9 @@
 
 缺省的，`ping` 命令只会向对方发送 32 个字节的数据。我们可以使用 `ping 192.168.83.19 -l 2000` 命令指定要发送的数据长度。此时使用 Wireshark 抓包（用 `ip.addr == 192.168.283.19` 进行过滤），了解 IP 包如何进行分段，如：分段标志、偏移量以及每个包的大小等
 
-![image-20220106105551457](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106105551457.png)
+![image-20220106105551457](https://user-images.githubusercontent.com/65861540/148331183-3f997eb9-df3b-4845-8c5d-7370d8d10c0a.png)
 
-![image-20220106105531895](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106105531895.png)
+![image-20220106105531895](https://user-images.githubusercontent.com/65861540/148331201-caf96e4a-7e88-4d7c-88ef-4dc551e22434.png)
 
 ✎ **问题**
 
@@ -176,9 +177,9 @@
 
 请使用 `tracert (-4) qige.io` 命令进行追踪，此时使用 Wireshark 抓包（用 `icmp` 过滤），分析每个发送包的 TTL 是如何进行改变的，从而理解路由追踪原理。
 
-![image-20220106110757534](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106110757534.png)
+![image-20220106110757534](https://user-images.githubusercontent.com/65861540/148331302-692659e9-fde4-4bf7-a0c5-7a67b7b1ca1d.png)
 
-![image-20220106111006527](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106111006527.png)
+![image-20220106111006527](https://user-images.githubusercontent.com/65861540/148331322-37081dca-5653-4f48-9351-5aca3b18358f.png)
 
 ✎ **问题**
 
@@ -196,11 +197,11 @@
 
 1. 用 Wireshark 任意抓包（可用 tcp 过滤），熟悉 TCP 段的结构，如：源端口、目的端口、序列号、确认号、各种标志位等字段。
 
-   ![image-20220106121957193](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106121957193.png)
+   ![image-20220106121957193](https://user-images.githubusercontent.com/65861540/148331359-6701d59a-a471-4621-b1ee-26da2bd9db94.png)
 
 2. 用 Wireshark 任意抓包（可用 udp 过滤），熟悉 UDP 段的结构，如：源端口、目的端口、长度等。
 
-![image-20220106122137313](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106122137313.png)
+   ![image-20220106122137313](https://user-images.githubusercontent.com/65861540/148331378-e15cfbeb-a061-4f26-8a41-e1e641f36488.png)
 
 ✎ **问题**
 
@@ -240,15 +241,15 @@
 
 1. 先使用 `ipconfig /flushdns` 命令清除缓存，再使用 `nslookup qige.io` 命令进行解析，同时用 Wireshark 任意抓包（可用 dns 过滤）。
 
-   ![image-20220106124045550](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106124045550.png)
+   ![image-20220106124045550](https://user-images.githubusercontent.com/65861540/148331480-9809b3b9-0a42-4297-8885-2b9fb462c2e5.png)
 
-   ![image-20220106123858962](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106123858962.png)
+   ![image-20220106123858962](https://user-images.githubusercontent.com/65861540/148331512-af1f8de1-0442-4d54-a582-2fa8ef6332b6.png)
 
 2. 你应该可以看到当前计算机使用 UDP，向默认的 DNS 服务器的 53 号端口发出了查询请求，而 DNS 服务器的 53 号端口返回了结果。
 
-   ![image-20220106123942283](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106123942283.png)
+   ![image-20220106123942283](https://user-images.githubusercontent.com/65861540/148331536-594d9835-5489-4f34-a4c2-934e1365d995.png)
 
-   ![image-20220106123958064](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220106123958064.png)
+   ![image-20220106123958064](https://user-images.githubusercontent.com/65861540/148331568-364521df-3807-4a97-b7cd-dd7e8c3c510a.png)
 
 3. 可了解一下 DNS 查询和应答的相关字段的含义
 
@@ -273,11 +274,11 @@
 
 2. 请在你捕获的包中找到 HTTP 请求包，查看请求使用的什么命令，如：`GET, POST`。并仔细了解请求的头部有哪些字段及其意义。
 
-   ![1690963-20201226160249152-832212079](C:\Users\Administrator\Desktop\新建文件夹\1690963-20201226160249152-832212079.png)
+   ![1690963-20201226160249152-832212079](https://user-images.githubusercontent.com/65861540/148331607-37a2f268-9c68-4684-b62f-649b24c73931.png)
 
 3. 请在你捕获的包中找到 HTTP 应答包，查看应答的代码是什么，如：`200, 304, 404` 等。并仔细了解应答的头部有哪些字段及其意义。
 
-   ![1690963-20201226160259971-510063767](C:\Users\Administrator\Desktop\新建文件夹\1690963-20201226160259971-510063767.png)
+   ![1690963-20201226160259971-510063767](https://user-images.githubusercontent.com/65861540/148331637-133d80f5-a09e-4bdb-a53e-963bac909ad7.png)
 
    > 1. 200：交易成功；
    >    304：客户端已经执行了GET，但文件未变化；
