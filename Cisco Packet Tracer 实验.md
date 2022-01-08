@@ -25,7 +25,16 @@
 
 `两台PC的基本网络配置`
 
-![image-20220106133338373](https://user-images.githubusercontent.com/65861540/148334133-40b04f34-7586-4cc1-9f3b-35bab3bdb5c8.png)
+第一台主机配置如下
+![image](https://user-images.githubusercontent.com/65861540/148636337-dc6dd3a4-ec02-4dbf-a19b-d5536cba6c60.png)
+
+第二台主机配置如下
+![image](https://user-images.githubusercontent.com/65861540/148636350-dbe012b4-ec49-45dc-96d1-2a0ce74ac825.png)
+
+测试能否ping通
+![image](https://user-images.githubusercontent.com/65861540/148636400-01c241cf-cecc-4c56-8da3-3b0174dc6dcf.png)
+
+成功ping通
 
 ## 用交换机构建 LAN
 
